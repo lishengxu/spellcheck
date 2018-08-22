@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ca49c9a-353b-4572-9bcd-ea481e571c52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/testspam_filter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/testspam_filter_get_all_info.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/testspam_filter_readfileline.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/correct.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/correct.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/spam_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/spam_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_correct_readfile.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_correct.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_correct.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testspam_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/testspam_filter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +20,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/untitled$Unittests_in_test_correct_py.coverage" NAME="Unittests in test_correct.py Coverage Results" MODIFIED="1534918507089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/untitled$main.coverage" NAME="main Coverage Results" MODIFIED="1534735038991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
-    <SUITE FILE_PATH="coverage/untitled$Unittests_in_test.coverage" NAME="Unittests in test Coverage Results" MODIFIED="1534908211504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/untitled$Unittests_in_test.coverage" NAME="Unittests in test Coverage Results" MODIFIED="1534942770970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="2127316633">
@@ -55,30 +58,35 @@
         <counts>
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.20" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.95" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="5" />
-          <entry key="txt" value="1" />
+          <entry key="index" value="1" />
+          <entry key="py" value="7" />
+          <entry key="txt" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="5" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="Python" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1951" />
+          <entry key="PLAIN_TEXT" value="60" />
+          <entry key="Python" value="3820" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1951" />
+          <entry key="dummy" value="1" />
+          <entry key="py" value="3820" />
+          <entry key="txt" value="59" />
         </counts>
       </usages-collector>
     </session>
@@ -97,31 +105,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/correct.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            <state relative-caret-position="110">
+              <caret line="5" selection-start-line="5" selection-end-line="9" selection-end-column="16" />
               <folding>
-                <marker date="1534908358115" expanded="true" signature="244:313" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/test_correct.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1980">
-              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1534908443603" expanded="true" signature="83:88" ph="..." />
-                <marker date="1534908443603" expanded="true" signature="927:1006" ph="..." />
+                <marker date="1534931804405" expanded="true" signature="296:297" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test.txt">
+        <entry file="file://$PROJECT_DIR$/test/test_correct.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="18" selection-start-line="18" selection-end-line="31" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+                <marker date="1534931804581" expanded="true" signature="83:88" ph="..." />
+                <marker date="1534931804581" expanded="true" signature="930:1027" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test_correct_readfile.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="2" selection-start-column="2" selection-end-column="2" />
@@ -131,14 +139,64 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/spam_filter.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+              <folding>
+                <marker date="1534942572713" expanded="true" signature="69:74" ph="..." />
+                <marker date="1534942572713" expanded="true" signature="376:381" ph="..." />
+                <marker date="1534942572713" expanded="true" signature="932:937" ph="..." />
+                <marker date="1534942572713" expanded="true" signature="1282:1287" ph="..." />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/teamcity/diff_tools.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/trec06c/full/index">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" column="4" selection-start-line="5" selection-end-line="5" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/testspam_filter.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="32">
+              <caret line="73" column="91" selection-start-line="73" selection-start-column="91" selection-end-line="73" selection-end-column="91" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+                <marker date="1534942767473" expanded="true" signature="113:115" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/testspam_filter_readfileline.txt">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/testspam_filter_get_all_info.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -156,6 +214,12 @@
     <findStrings>
       <find>words</find>
       <find>alphabetknownset</find>
+      <find>get_all_info</find>
+      <find>read_file_line</find>
+      <find>train</find>
+      <find>get_all_index</find>
+      <find>train_each_index</find>
+      <find>collections</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -165,11 +229,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/main/main.py" />
-        <option value="$PROJECT_DIR$/main/spam_filter.py" />
-        <option value="$PROJECT_DIR$/test/testspam_filter.py" />
+        <option value="$PROJECT_DIR$/test/test.txt" />
+        <option value="$PROJECT_DIR$/test/test_correct_readfile.txt" />
+        <option value="$PROJECT_DIR$/test/testspam_filter_readfileline.txt" />
         <option value="$PROJECT_DIR$/main/correct.py" />
         <option value="$PROJECT_DIR$/test/test_correct.py" />
-        <option value="$PROJECT_DIR$/test/test.txt" />
+        <option value="$PROJECT_DIR$/test/testspam_filter_get_all_info.txt" />
+        <option value="$PROJECT_DIR$/main/spam_filter.py" />
+        <option value="$PROJECT_DIR$/test/testspam_filter.py" />
       </list>
     </option>
   </component>
@@ -213,6 +280,13 @@
             <path>
               <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
               <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="trec06c" type="462c0819:PsiDirectoryNode" />
+              <item name="full" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -251,7 +325,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in test_correct.py">
+  <component name="RunManager" selected="Python tests.Unittests in test">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="untitled" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -311,8 +385,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests in test_correct.py" />
         <item itemvalue="Python tests.Unittests in test" />
+        <item itemvalue="Python tests.Unittests in test_correct.py" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -331,47 +405,47 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test - 2018.08.22 at 10h 31m 21s.xml">
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 47m 42s.xml">
       <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test - 2018.08.22 at 10h 31m 28s.xml">
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 48m 31s.xml">
       <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test - 2018.08.22 at 11h 23m 32s.xml">
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 48m 57s.xml">
       <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_correct_py - 2018.08.22 at 11h 23m 42s.xml">
-      <configuration name="Unittests in test_correct.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 50m 07s.xml">
+      <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_correct_py - 2018.08.22 at 11h 24m 03s.xml">
-      <configuration name="Unittests in test_correct.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 50m 31s.xml">
+      <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_correct_py - 2018.08.22 at 11h 24m 09s.xml">
-      <configuration name="Unittests in test_correct.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 55m 14s.xml">
+      <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_correct_py - 2018.08.22 at 11h 25m 58s.xml">
-      <configuration name="Unittests in test_correct.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 56m 38s.xml">
+      <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_correct_py - 2018.08.22 at 11h 27m 24s.xml">
-      <configuration name="Unittests in test_correct.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 57m 40s.xml">
+      <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_correct_py - 2018.08.22 at 11h 27m 53s.xml">
-      <configuration name="Unittests in test_correct.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 58m 04s.xml">
+      <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_correct_py - 2018.08.22 at 11h 28m 09s.xml">
-      <configuration name="Unittests in test_correct.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test - 2018.08.22 at 20h 58m 41s.xml">
+      <configuration name="Unittests in test" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="50" y="0" width="1871" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18883416" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1904762" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32917964" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31152648" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5212876" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -396,13 +470,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/lib/python3.6/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="821" selection-start-line="821" selection-end-line="821" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -410,41 +477,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/spam_filter.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="669" selection-start-line="669" selection-end-line="669" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_correct_readfile.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="2" selection-start-column="2" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/correct.py">
+    <entry file="file://$PROJECT_DIR$/test/testspam_filter_readfileline.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <marker date="1534908358115" expanded="true" signature="244:313" ph="..." />
-          </folding>
+        <state relative-caret-position="66">
+          <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/testspam_filter.py">
+    <entry file="file://$PROJECT_DIR$/test/testspam_filter_get_all_info.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="88">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/trec06c/full/index">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="4" selection-start-line="5" selection-end-line="5" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/correct.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" selection-start-line="5" selection-end-line="9" selection-end-column="16" />
+          <folding>
+            <marker date="1534931804405" expanded="true" signature="296:297" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test_correct.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        <state relative-caret-position="44">
+          <caret line="18" selection-start-line="18" selection-end-line="31" selection-end-column="44" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1534908443603" expanded="true" signature="83:88" ph="..." />
-            <marker date="1534908443603" expanded="true" signature="927:1006" ph="..." />
+            <marker date="1534931804581" expanded="true" signature="83:88" ph="..." />
+            <marker date="1534931804581" expanded="true" signature="930:1027" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/spam_filter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding>
+            <marker date="1534942572713" expanded="true" signature="69:74" ph="..." />
+            <marker date="1534942572713" expanded="true" signature="376:381" ph="..." />
+            <marker date="1534942572713" expanded="true" signature="932:937" ph="..." />
+            <marker date="1534942572713" expanded="true" signature="1282:1287" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/teamcity/diff_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testspam_filter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="73" column="91" selection-start-line="73" selection-start-column="91" selection-end-line="73" selection-end-column="91" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1534942767473" expanded="true" signature="113:115" ph="..." />
           </folding>
         </state>
       </provider>

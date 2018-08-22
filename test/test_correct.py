@@ -2,9 +2,9 @@ import unittest
 from main.correct import *
 
 
-class Testcorrect(unittest.TestCase):
+class TestCorrect(unittest.TestCase):
 
-    def testwords(self):
+    def test_words(self):
         text = ''
         self.assertEqual([], words(text))
         text = 'abd'
@@ -16,7 +16,7 @@ class Testcorrect(unittest.TestCase):
         text = 'ab cd ef g'
         self.assertEqual(['ab', 'cd', 'ef', 'g'], words(text))
 
-    def testtrain(self):
+    def test_train(self):
         text = ['']
         model = collections.defaultdict(lambda: 1)
         model[''] += 1
@@ -31,11 +31,11 @@ class Testcorrect(unittest.TestCase):
         model['aaaa'] += 1
         self.assertEqual(model, train(text))
 
-    def testreadfile(self):
-        file = 'test.txt'
-        self.assertEqual('ad', readfile(file))
+    def test_readfile(self):
+        file = 'test_correct_readfile.txt'
+        self.assertEqual('ad', read_file(file))
 
-    def testedits1(self):
+    def test_edits1(self):
         text = ''
         alphabetset = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                        't', 'u', 'v', 'w', 'x', 'y', 'z'}
@@ -66,7 +66,7 @@ class Testcorrect(unittest.TestCase):
                        'wovd', 'wkrd', 'iord', }
         self.assertEqual(alphabetset, edits1(text))
 
-    def testKnown(self):
+    def test_Known(self):
         text = 'word'
         alphabetknownset = {'cord', 'ford', 'lord', 'sword', 'ward', 'wood', 'word', 'words', 'wordy', 'wore', 'work',
                             'world', 'worm', 'worn'}
@@ -89,7 +89,7 @@ class Testcorrect(unittest.TestCase):
                                 'would', 'wound', 'wove', 'wry', 'yard', 'york'}
         self.assertEqual(alphabetknown_edits2, known_edits2(text))
 
-    def testcorrect(self):
+    def test_correct(self):
         text = 'word'
         self.assertEqual('word', correct(text))
         text = 'wor'

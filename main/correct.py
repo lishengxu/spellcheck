@@ -9,11 +9,11 @@ def train(features):
         model[each] += 1
     return model
 
-def readfile(file):
+def read_file(file):
     with open(file) as f:
         return f.read()
 
-NWORDS = train(words(readfile('../Gutenberg.txt')));
+NWORDS = train(words(read_file('../Gutenberg.txt')));
 
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
