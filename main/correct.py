@@ -13,7 +13,7 @@ def read_file(file):
     with open(file) as f:
         return f.read()
 
-NWORDS = train(words(read_file('../Gutenberg.txt')));
+NWORDS = train(words(read_file('../data/Gutenberg.txt')));
 
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
