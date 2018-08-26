@@ -1,24 +1,35 @@
 import re, collections
+import jieba
 
 def read_file_line(file_name):
     lines = []
-    with open(file_name, 'r', errors = 'ignore') as f:
+    with open(file_name, 'r', encoding='gbk', errors = 'ignore') as f:
         for line in f.readlines():
             lines.append(line.strip())
     return lines
 
-def split_word(word):
-    words = word.split(' ')
+def split_index_info(word, split = ' '):
+    words = word.split(split)
     words_not_null = []
-    for word in words:
-        if word != '':
-            words_not_null.append(word)
+    for each in words:
+        if each != '':
+            words_not_null.append(each.strip())
+    return words_not_null
+
+def split_content_info(word):
+    word_cut = jieba.cut(word, cut_all=True)
+    words_split = ' '.join(word_cut)
+    words = words_split.split(' ')
+    words_not_null = []
+    for each in words:
+        if each != '' and (not each.isdigit()):
+            words_not_null.append(each)
     return words_not_null
 
 def get_all_index(lines):
     all_info = []
     for line in lines:
-        words = split_word(line)
+        words = split_index_info(line)
         if len(words) == 2:
             all_info.append(words)
     return all_info
@@ -34,7 +45,7 @@ def train_each_index(file_name, model = None):
     all_word = []
     lines = read_file_line(file_name)
     for line in lines:
-        all_word.extend(split_word(line))
+        all_word.extend(split_content_info(line))
     return train(all_word, model)
 
 def get_all_spam_info():

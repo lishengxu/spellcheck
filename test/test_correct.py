@@ -1,7 +1,6 @@
 import unittest
 from main.correct import *
 
-
 class TestCorrect(unittest.TestCase):
 
     def test_words(self):

@@ -1,7 +1,5 @@
 import unittest
-import re, collections
 from main.spam_filter import *
-
 
 class Testspam_filter(unittest.TestCase):
 
@@ -12,16 +10,31 @@ class Testspam_filter(unittest.TestCase):
         self.assertEqual('cd', line[1])
         self.assertEqual('ef', line[2])
 
-    def test_split_word(self):
-        self.assertEqual([], split_word(''))
-        self.assertEqual(['a'], split_word('a'))
-        self.assertEqual(['a'], split_word(' a '))
-        self.assertEqual(['ab'], split_word('ab'))
+    def test_split_index_info(self):
+        self.assertEqual([], split_index_info(''))
+        self.assertEqual(['a'], split_index_info('a'))
+        self.assertEqual(['a'], split_index_info(' a '))
+        self.assertEqual(['ab'], split_index_info('ab'))
         splits = ['a', 'b']
-        self.assertEqual(splits, split_word('a b'))
-        self.assertEqual(splits, split_word(' a b'))
-        self.assertEqual(splits, split_word(' a b '))
-        self.assertEqual(['a', 'b', 'c'], split_word('a b c'))
+        self.assertEqual(splits, split_index_info('a  b'))
+        self.assertEqual(splits, split_index_info(' a b'))
+        self.assertEqual(splits, split_index_info(' a b '))
+        self.assertEqual(['a', 'b', 'c'], split_index_info('a b c'))
+
+    def test_split_content_info(self):
+        self.assertEqual([], split_content_info(''))
+        self.assertEqual(['a'], split_content_info('a'))
+        self.assertEqual(['a'], split_content_info(' a '))
+        self.assertEqual(['ab'], split_content_info('ab'))
+        splits = ['a', 'b']
+        self.assertEqual(splits, split_content_info('a b'))
+        self.assertEqual(splits, split_content_info(' a b'))
+        self.assertEqual(splits, split_content_info(' a b '))
+        self.assertEqual(['a', 'b', 'c'], split_content_info('a b c'))
+        self.assertEqual(['we', 'love', 'beijing', 'and', 'tianjin'],
+                         split_content_info('we love beijing and tianjin'))
+        self.assertEqual(['I', 'm', 'from', 'fuyang', 'at', 'pm', 'address2', 'xiaolitai'],
+                         split_content_info('I\'m from fuyang, at 19890602, pm 05:00, address2:xiaolitai'))
 
     def test_train(self):
         text = ['']
@@ -74,14 +87,20 @@ class Testspam_filter(unittest.TestCase):
         self.assertEqual(model2, train_each_index('testspam_filter_get_all_info.txt', model))
 
     def test_get_all_spam_info(self):
-        model = collections.defaultdict(lambda: 1)
-        model['ab'] += 1
-        model['adte'] += 1
-        model['cd'] += 1
-        model['ef'] += 2
-        model['efl'] += 1
-        model['gh'] += 2
-        model['ghtes'] += 1
-        model['tech'] += 1
-        model['test'] += 1
-        #self.assertEqual(model, get_all_spam_info())
+        lines = []
+        with open('testspam_filter_get_all_spam_info.txt', 'r', errors='ignore') as f:
+            for line in f.readlines():
+                lines.append(line.strip())
+        model = collections.defaultdict(lambda: 0)
+        for line in lines:
+            words = split_index_info(line, ':')
+            model[words[0]] += int(words[1])
+        model2 = get_all_spam_info()
+        print('---------------being--------')
+        for each in model2.keys():
+            print(each, ':', model2.get(each))
+        print('-----------------------')
+        for each in model.keys():
+            print(each, ':', model.get(each))
+        print('---------------end--------')
+        self.assertEqual(model, model2)
