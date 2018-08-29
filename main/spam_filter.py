@@ -1,6 +1,9 @@
 import re, collections
 import jieba
 
+def words(text):
+    return re.findall(r'\S+', text.lower())
+
 def read_file_line(file_name):
     lines = []
     with open(file_name, 'r', encoding='gbk', errors = 'ignore') as f:
@@ -16,7 +19,7 @@ def split_index_info(word, split = ' '):
             words_not_null.append(each.strip())
     return words_not_null
 
-def split_content_info(word):
+def split_chinese_content_info(word):
     word_cut = jieba.cut(word, cut_all=True)
     words_split = ' '.join(word_cut)
     words = words_split.split(' ')
@@ -35,7 +38,7 @@ def get_all_index(lines):
     return all_info
 
 def train(features, model = None):
-    if model == None:
+    if model is None:
         model = collections.defaultdict(lambda: 1)
     for each in features:
         model[each] += 1
@@ -45,10 +48,10 @@ def train_each_index(file_name, model = None):
     all_word = []
     lines = read_file_line(file_name)
     for line in lines:
-        all_word.extend(split_content_info(line))
+        all_word.extend(split_chinese_content_info(line))
     return train(all_word, model)
 
-def get_all_spam_info():
+def get_chinese_all_spam_info():
     model = collections.defaultdict(lambda: 0)
     file_path = '../data/trec06c/full'
     lines = read_file_line(file_path + '/index')
@@ -56,4 +59,11 @@ def get_all_spam_info():
     for info in all_info:
         if info[0] == 'spam':
             train_each_index(file_path + '/' + info[1], model)
+    return model
+
+def get_all_spam_info():
+    model = collections.defaultdict(lambda: 0)
+    file_path = '../data/trec06p/full'
+    lines = read_file_line(file_path + '/index')
+
     return model

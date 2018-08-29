@@ -3,6 +3,18 @@ from main.spam_filter import *
 
 class Testspam_filter(unittest.TestCase):
 
+    def test_words(self):
+        text = ''
+        self.assertEqual([], words(text))
+        text = 'abd'
+        self.assertEqual(['abd'], words(text))
+        text = 'a.txt bef'
+        self.assertEqual(['a.txt', 'bef'], words(text))
+        text = 'ab     bef'
+        self.assertEqual(['ab', 'bef'], words(text))
+        text = 'ab+@test cd!test ef g'
+        self.assertEqual(['ab+@test', 'cd!test', 'ef', 'g'], words(text))
+
     def test_read_file_line(self):
         file = 'testspam_filter_readfileline.txt'
         line = read_file_line(file)
@@ -21,20 +33,20 @@ class Testspam_filter(unittest.TestCase):
         self.assertEqual(splits, split_index_info(' a b '))
         self.assertEqual(['a', 'b', 'c'], split_index_info('a b c'))
 
-    def test_split_content_info(self):
-        self.assertEqual([], split_content_info(''))
-        self.assertEqual(['a'], split_content_info('a'))
-        self.assertEqual(['a'], split_content_info(' a '))
-        self.assertEqual(['ab'], split_content_info('ab'))
+    def test_chinese_split_content_info(self):
+        self.assertEqual([], split_chinese_content_info(''))
+        self.assertEqual(['a'], split_chinese_content_info('a'))
+        self.assertEqual(['a'], split_chinese_content_info(' a '))
+        self.assertEqual(['ab'], split_chinese_content_info('ab'))
         splits = ['a', 'b']
-        self.assertEqual(splits, split_content_info('a b'))
-        self.assertEqual(splits, split_content_info(' a b'))
-        self.assertEqual(splits, split_content_info(' a b '))
-        self.assertEqual(['a', 'b', 'c'], split_content_info('a b c'))
+        self.assertEqual(splits, split_chinese_content_info('a b'))
+        self.assertEqual(splits, split_chinese_content_info(' a b'))
+        self.assertEqual(splits, split_chinese_content_info(' a b '))
+        self.assertEqual(['a', 'b', 'c'], split_chinese_content_info('a b c'))
         self.assertEqual(['we', 'love', 'beijing', 'and', 'tianjin'],
-                         split_content_info('we love beijing and tianjin'))
+                         split_chinese_content_info('we love beijing and tianjin'))
         self.assertEqual(['I', 'm', 'from', 'fuyang', 'at', 'pm', 'address2', 'xiaolitai'],
-                         split_content_info('I\'m from fuyang, at 19890602, pm 05:00, address2:xiaolitai'))
+                         split_chinese_content_info('I\'m from fuyang, at 19890602, pm 05:00, address2:xiaolitai'))
 
     def test_train(self):
         text = ['']
@@ -86,7 +98,7 @@ class Testspam_filter(unittest.TestCase):
         model2['test'] += 1
         self.assertEqual(model2, train_each_index('testspam_filter_get_all_info.txt', model))
 
-    def test_get_all_spam_info(self):
+    def test_chinese_get_all_spam_info(self):
         lines = []
         with open('testspam_filter_get_all_spam_info.txt', 'r', errors='ignore') as f:
             for line in f.readlines():
@@ -95,12 +107,16 @@ class Testspam_filter(unittest.TestCase):
         for line in lines:
             words = split_index_info(line, ':')
             model[words[0]] += int(words[1])
-        model2 = get_all_spam_info()
-        print('---------------being--------')
-        for each in model2.keys():
-            print(each, ':', model2.get(each))
-        print('-----------------------')
-        for each in model.keys():
-            print(each, ':', model.get(each))
-        print('---------------end--------')
-        self.assertEqual(model, model2)
+        # model2 = get_chinese_all_spam_info()
+        # print('---------------being--------')
+        # for each in model2.keys():
+        #     print(each, ':', model2.get(each))
+        # print('-----------------------')
+        # for each in model.keys():
+        #     print(each, ':', model.get(each))
+        # print('---------------end--------')
+        # self.assertEqual(model, model2)
+
+    def test_get_all_spam_info(self):
+        model = collections.defaultdict(lambda: 0)
+        self.assertEqual(model, get_all_spam_info())
