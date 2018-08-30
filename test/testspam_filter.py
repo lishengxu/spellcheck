@@ -127,11 +127,11 @@ class Testspam_filter(unittest.TestCase):
             words = split_index_info(line, ':')
             model[words[0]] += int(words[1])
         model2 = get_all_spam_info()
-        print('---------------being--------')
-        for each in model2.keys():
-            print(each, ':', model2.get(each))
-        print('-----------------------')
-        for each in model.keys():
-            print(each, ':', model.get(each))
-        print('---------------end--------')
+        # print('---------------being--------')
+        # for each in model2.keys():
+        #     print(each, ':', model2.get(each))
+        # print('-----------------------')
+        # for each in model.keys():
+        #     print(each, ':', model.get(each))
+        # print('---------------end--------')
         self.assertEqual(model, model2)
