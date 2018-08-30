@@ -9,11 +9,11 @@ class Testspam_filter(unittest.TestCase):
         text = 'abd'
         self.assertEqual(['abd'], words(text))
         text = 'a.txt bef'
-        self.assertEqual(['a.txt', 'bef'], words(text))
+        self.assertEqual(['a', 'txt', 'bef'], words(text))
         text = 'ab     bef'
         self.assertEqual(['ab', 'bef'], words(text))
         text = 'ab+@test cd!test ef g'
-        self.assertEqual(['ab+@test', 'cd!test', 'ef', 'g'], words(text))
+        self.assertEqual(['ab', 'test', 'cd', 'test', 'ef', 'g'], words(text))
 
     def test_read_file_line(self):
         file = 'testspam_filter_readfileline.txt'
@@ -85,7 +85,7 @@ class Testspam_filter(unittest.TestCase):
         model['ghtes'] += 1
         model['tech'] += 1
         model['test'] += 1
-        self.assertEqual(model, train_each_index('testspam_filter_get_all_info.txt'))
+        self.assertEqual(model, train_each_index('testspam_filter_get_all_info.txt', split_chinese_content_info))
         model2 = model.copy()
         model2['ab'] += 1
         model2['adte'] += 1
@@ -96,11 +96,11 @@ class Testspam_filter(unittest.TestCase):
         model2['ghtes'] += 1
         model2['tech'] += 1
         model2['test'] += 1
-        self.assertEqual(model2, train_each_index('testspam_filter_get_all_info.txt', model))
+        self.assertEqual(model2, train_each_index('testspam_filter_get_all_info.txt', split_chinese_content_info, model))
 
     def test_chinese_get_all_spam_info(self):
         lines = []
-        with open('testspam_filter_get_all_spam_info.txt', 'r', errors='ignore') as f:
+        with open('testspam_filter_get_all_chinese_spam_info.txt', 'r', errors='ignore') as f:
             for line in f.readlines():
                 lines.append(line.strip())
         model = collections.defaultdict(lambda: 0)
@@ -118,5 +118,20 @@ class Testspam_filter(unittest.TestCase):
         # self.assertEqual(model, model2)
 
     def test_get_all_spam_info(self):
+        lines = []
+        with open('testspam_filter_get_all_spam_info.txt', 'r', errors='ignore') as f:
+            for line in f.readlines():
+                lines.append(line.strip())
         model = collections.defaultdict(lambda: 0)
-        self.assertEqual(model, get_all_spam_info())
+        for line in lines:
+            words = split_index_info(line, ':')
+            model[words[0]] += int(words[1])
+        model2 = get_all_spam_info()
+        print('---------------being--------')
+        for each in model2.keys():
+            print(each, ':', model2.get(each))
+        print('-----------------------')
+        for each in model.keys():
+            print(each, ':', model.get(each))
+        print('---------------end--------')
+        self.assertEqual(model, model2)

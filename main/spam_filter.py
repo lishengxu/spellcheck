@@ -2,7 +2,7 @@ import re, collections
 import jieba
 
 def words(text):
-    return re.findall(r'\S+', text.lower())
+    return re.findall('[a-z]+', text.lower())
 
 def read_file_line(file_name):
     lines = []
@@ -44,11 +44,11 @@ def train(features, model = None):
         model[each] += 1
     return model
 
-def train_each_index(file_name, model = None):
+def train_each_index(file_name, split_func, model = None):
     all_word = []
     lines = read_file_line(file_name)
     for line in lines:
-        all_word.extend(split_chinese_content_info(line))
+        all_word.extend(split_func(line))
     return train(all_word, model)
 
 def get_chinese_all_spam_info():
@@ -58,12 +58,15 @@ def get_chinese_all_spam_info():
     all_info = get_all_index(lines)
     for info in all_info:
         if info[0] == 'spam':
-            train_each_index(file_path + '/' + info[1], model)
+            train_each_index(file_path + '/' + info[1], split_chinese_content_info, model)
     return model
 
 def get_all_spam_info():
     model = collections.defaultdict(lambda: 0)
     file_path = '../data/trec06p/full'
-    lines = read_file_line(file_path + '/index')
-
+    lines = read_file_line(file_path + '/index1')
+    all_info = get_all_index(lines)
+    for info in all_info:
+        if info[0] == 'spam':
+            train_each_index(file_path + '/' + info[1], words, model)
     return model
