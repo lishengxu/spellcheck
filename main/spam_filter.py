@@ -12,9 +12,9 @@ def read_file_line(file_name):
     return lines
 
 def split_index_info(word, split = ' '):
-    words = word.split(split)
+    word_splits = word.split(split)
     words_not_null = []
-    for each in words:
+    for each in word_splits:
         if each != '':
             words_not_null.append(each.strip())
     return words_not_null
@@ -22,9 +22,9 @@ def split_index_info(word, split = ' '):
 def split_chinese_content_info(word):
     word_cut = jieba.cut(word, cut_all=True)
     words_split = ' '.join(word_cut)
-    words = words_split.split(' ')
+    words_splits = words_split.split(' ')
     words_not_null = []
-    for each in words:
+    for each in words_splits:
         if each != '' and (not each.isdigit()):
             words_not_null.append(each)
     return words_not_null
@@ -32,9 +32,9 @@ def split_chinese_content_info(word):
 def get_all_index(lines):
     all_info = []
     for line in lines:
-        words = split_index_info(line)
-        if len(words) == 2:
-            all_info.append(words)
+        word_splits = split_index_info(line)
+        if len(word_splits) == 2:
+            all_info.append(word_splits)
     return all_info
 
 def train(features, model = None):

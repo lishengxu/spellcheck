@@ -13,7 +13,7 @@ def read_file(file):
     with open(file) as f:
         return f.read()
 
-NWORDS = train(words(read_file('../data/Gutenberg.txt')))
+N_WORDS = train(words(read_file('../data/Gutenberg.txt')))
 
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
@@ -26,11 +26,11 @@ def edits1(word):
     return set(deletes + transposes + replaces + inserts)
 
 def known_edits2(word):
-    return set(e2 for e1 in edits1(word) for e2 in edits1(e1) if e2 in NWORDS)
+    return set(e2 for e1 in edits1(word) for e2 in edits1(e1) if e2 in N_WORDS)
 
-def known(words):
-    return set(w for w in words if w in NWORDS)
+def known(word_list):
+    return set(w for w in word_list if w in N_WORDS)
 
 def correct(word):
     candidates = known([word]) or known(edits1(word)) or known_edits2(word) or [word]
-    return max(candidates, key=NWORDS.get)
+    return max(candidates, key=N_WORDS.get)
