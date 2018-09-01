@@ -1,0 +1,5 @@
+ham ../data/000/000
+spam ../data/000/001
+spam ../data/000/002
+ham ../data/000/003
+spam ../data/000/004
