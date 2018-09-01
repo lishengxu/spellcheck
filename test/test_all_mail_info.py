@@ -28,7 +28,7 @@ class TestAllMailInfo(unittest.TestCase):
         self.assertEqual(['ab', 'test', 'cd', 'test', 'ef', 'g'], AllMailInfo.words(text))
 
     def test_read_file_line(self):
-        file = 'testspam_filter_readfileline.txt'
+        file = 'test_all_mail_info_readfileline.txt'
         line = AllMailInfo.read_file_line(file)
         self.assertEqual('ab', line[0])
         self.assertEqual('cd', line[1])

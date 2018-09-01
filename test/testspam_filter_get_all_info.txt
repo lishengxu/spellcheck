@@ -1,6 +1,0 @@
-ab cd
-test
-ef gh
-tech
-gh ef
-ghtes efl adte
