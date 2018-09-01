@@ -124,8 +124,8 @@ class Testspam_filter(unittest.TestCase):
                 lines.append(line.strip())
         model = collections.defaultdict(lambda: 0)
         for line in lines:
-            words = split_index_info(line, ':')
-            model[words[0]] += int(words[1])
+            word_split = split_index_info(line, ':')
+            model[word_split[0]] += int(word_split[1])
         model2 = get_all_spam_info()
         # print('---------------being--------')
         # for each in model2.keys():
