@@ -76,16 +76,16 @@ class TestAllMailInfo(unittest.TestCase):
         for line in lines:
             word_split = AllMailInfo.split_index_info(line, ':')
             model[word_split[0]] += int(word_split[1])
-        test = AllMailInfo.MainInfo('../data/trec06p/data/000/000')
-        self.assertEqual(model, test.get_mail_info())
+        test = AllMailInfo.MailInfo('../data/trec06p/data/000/000')
+        self.assertEqual(model, test.get_mail_dict())
 
     def test_static_parse(self):
         model = collections.defaultdict(lambda: [])
-        model['ham'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/000'))
-        model['ham'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/003'))
-        model['spam'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/001'))
-        model['spam'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/002'))
-        model['spam'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/004'))
+        model['ham'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/000'))
+        model['ham'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/003'))
+        model['spam'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/001'))
+        model['spam'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/002'))
+        model['spam'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/004'))
 
         model2 = AllMailInfo.static_parse('../data/trec06p/full/index3')
         for each in model.keys():
@@ -95,19 +95,19 @@ class TestAllMailInfo(unittest.TestCase):
                 expected = lines_expected[index]
                 actual = lines_actual[index]
                 self.assertEqual(expected.get_path_name(), actual.get_path_name())
-                self.assertEqual(expected.get_mail_info(), actual.get_mail_info())
+                self.assertEqual(expected.get_mail_dict(), actual.get_mail_dict())
 
     def test_parse(self):
         model = collections.defaultdict(lambda: [])
-        model['ham'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/000'))
-        model['ham'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/003'))
-        model['spam'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/001'))
-        model['spam'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/002'))
-        model['spam'].append(AllMailInfo.MainInfo('../data/trec06p/data/000/004'))
+        model['ham'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/000'))
+        model['ham'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/003'))
+        model['spam'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/001'))
+        model['spam'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/002'))
+        model['spam'].append(AllMailInfo.MailInfo('../data/trec06p/data/000/004'))
 
         test = AllMailInfo('../data/trec06p/full/index3')
         test.parse()
-        model2 = test.get_mail_info()
+        model2 = test.get_mail_index_dict()
         for each in model.keys():
             lines_expected = model.get(each)
             lines_actual = model2.get(each)
@@ -115,4 +115,21 @@ class TestAllMailInfo(unittest.TestCase):
                 expected = lines_expected[index]
                 actual = lines_actual[index]
                 self.assertEqual(expected.get_path_name(), actual.get_path_name())
-                self.assertEqual(expected.get_mail_info(), actual.get_mail_info())
+                self.assertEqual(expected.get_mail_dict(), actual.get_mail_dict())
+
+    def test_collect_all_word(self):
+        lines = []
+        with open('test_all_mail_info_fit.txt', 'r', errors='ignore') as f:
+            for line in f.readlines():
+                lines.append(line.strip())
+        model = collections.defaultdict(lambda: 0)
+        for line in lines:
+            word_split = AllMailInfo.split_index_info(line, ':')
+            model[word_split[0]] += int(word_split[1])
+
+        test = AllMailInfo('../data/trec06p/full/index4')
+        test.parse()
+        result = test.collect_all_word()
+        # for key in result.keys():
+        #     print('%s : %d' % (key, result.get(key)))
+        self.assertEqual(model, result)
