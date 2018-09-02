@@ -83,8 +83,10 @@ class AllMailInfo(object):
     def static_parse(path_name):
         result = collections.defaultdict(lambda: [])
         model = AllMailInfo.parse_index_file(path_name)
+        print('---')
         for each in model.keys():
             for line in model.get(each):
+                print('111')
                 result[each].append(AllMailInfo.MailInfo(line))
         return result
 
@@ -108,17 +110,44 @@ class AllMailInfo(object):
         all_word_frequency = collections.defaultdict(lambda: [])
         for key in self.__all_word_dict.keys():
             for mail_index in self.__mail_index_dict.keys():
+                print('2222')
                 total = len(self.__mail_index_dict.get(mail_index))
                 count = 0
                 for mail_info in self.__mail_index_dict.get(mail_index):
                     if mail_info.get_mail_dict().get(key) is not None:
                         count += 1
+                if count == 0:
+                    count += 1
                 all_word_frequency[mail_index].append(AllMailInfo.WordFrequency(key, count / total))
         self.__all_word_frequency = all_word_frequency
-        # 获取所有的词
-        # 计算每个词在mail中每个each中的的概率,存储在collection['word'] = 12中
-        #
         return self.__all_word_frequency
 
-    def predict(self):
-        pass
+    def predict_spam(self, features_test):
+        all_ham_word_frequency = self.__all_word_frequency.get('ham')
+        all_spam_word_frequency = self.__all_word_frequency.get('spam')
+
+        if all_ham_word_frequency is None or all_spam_word_frequency is None:
+            return False
+
+        word_probability = []
+        for word in features_test:
+            probability = 0.4
+            for spam_word_frequency in all_spam_word_frequency:
+                if spam_word_frequency.get_word() == word:
+                    spam_frequency = spam_word_frequency.get_frequency()
+                    ham_frequency = 0.01
+                    for ham_word_frequency in all_ham_word_frequency:
+                        if ham_word_frequency.get_word() == word:
+                            ham_frequency = ham_word_frequency.get_frequency()
+                            break
+                    probability = spam_frequency / (spam_frequency+ ham_frequency)
+                    break
+            word_probability.append(probability)
+        word_probability.sort(reverse = True)
+        result = 1
+        for i in range(15):
+            if word_probability[i] > 0.4:
+                result *= word_probability[i]
+            else:
+                result *= 0.4
+        return result > 0.9
