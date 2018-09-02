@@ -14,10 +14,22 @@ class AllMailInfo(object):
         def get_mail_dict(self):
             return self.__mail_dict
 
+    class WordFrequency(object):
+        def __init__(self, word, frequency):
+            self.__word = word
+            self.__frequency = frequency
+
+        def get_word(self):
+            return self.__word
+
+        def get_frequency(self):
+            return self.__frequency
+
     def __init__(self, path_name):
         self.__path_name = os.path.relpath(path_name)
         self.__mail_index_dict = None
-        self.__all_word_info_dict = None
+        self.__all_word_dict = None
+        self.__all_word_frequency = None
 
     @staticmethod
     def words(text):
@@ -92,18 +104,21 @@ class AllMailInfo(object):
         return all_word_info
 
     def fit(self):
-        self.__all_word_info_dict = self.collect_all_word()
-        all_type_info = collections.defaultdict(lambda: [])
-        for key in self.__all_word_info_dict.keys():
+        self.__all_word_dict = self.collect_all_word()
+        all_word_frequency = collections.defaultdict(lambda: [])
+        for key in self.__all_word_dict.keys():
             for mail_index in self.__mail_index_dict.keys():
+                total = len(self.__mail_index_dict.get(mail_index))
+                count = 0
                 for mail_info in self.__mail_index_dict.get(mail_index):
-                    if mail_info.get_mail_dict().get(key) == 0:
-                        pass
-                pass
+                    if mail_info.get_mail_dict().get(key) is not None:
+                        count += 1
+                all_word_frequency[mail_index].append(AllMailInfo.WordFrequency(key, count / total))
+        self.__all_word_frequency = all_word_frequency
         # 获取所有的词
         # 计算每个词在mail中每个each中的的概率,存储在collection['word'] = 12中
         #
-        return self.__all_word_info_dict
+        return self.__all_word_frequency
 
     def predict(self):
         pass

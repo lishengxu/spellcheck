@@ -119,7 +119,7 @@ class TestAllMailInfo(unittest.TestCase):
 
     def test_collect_all_word(self):
         lines = []
-        with open('test_all_mail_info_fit.txt', 'r', errors='ignore') as f:
+        with open('test_all_mail_info_collection_all_word.txt', 'r', errors='ignore') as f:
             for line in f.readlines():
                 lines.append(line.strip())
         model = collections.defaultdict(lambda: 0)
@@ -129,7 +129,29 @@ class TestAllMailInfo(unittest.TestCase):
 
         test = AllMailInfo('../data/trec06p/full/index4')
         test.parse()
-        result = test.collect_all_word()
-        # for key in result.keys():
-        #     print('%s : %d' % (key, result.get(key)))
-        self.assertEqual(model, result)
+        self.assertEqual(model, test.collect_all_word())
+
+    def test_fit(self):
+        lines = []
+        with open('test_all_mail_info_fit.txt', 'r', errors='ignore') as f:
+            for line in f.readlines():
+                lines.append(line.strip())
+        model = collections.defaultdict(lambda: 0)
+        for line in lines:
+            word_split = AllMailInfo.split_index_info(line, ':')
+            print(word_split)
+            model[word_split[0]] += float(word_split[1])
+
+        test = AllMailInfo('../data/trec06p/full/index4')
+        test.parse()
+        word_frequency = test.fit()
+
+        model2 = collections.defaultdict(lambda: 0)
+        for key in word_frequency.keys():
+            lines = word_frequency.get(key)
+            for line in lines:
+                model2[line.get_word()] += float(line.get_frequency())
+        for key in model2.keys():
+            self.assertAlmostEqual(model.get(key), model2.get(key), 6)
+        for key in model.keys():
+            self.assertAlmostEqual(model.get(key), model2.get(key), 6)
