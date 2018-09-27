@@ -168,7 +168,7 @@ class TestAllMailInfo(unittest.TestCase):
 
     def test_predict(self):
         lines = []
-        path_name = '../data/trec06p/full/index6'
+        path_name = '../data/trec06p/full/index_test'
         with open(path_name, 'r', errors='ignore') as f:
             for line in f.readlines():
                 lines.append(line.strip())
@@ -181,7 +181,7 @@ class TestAllMailInfo(unittest.TestCase):
         test = AllMailInfo('../data/trec06p/full/index_fit')
         test.parse()
         test.fit()
-        pint('3333')
+        print('3333')
         for key in model.keys():
             for mail_info in model.get(key):
                 temp_list = []
